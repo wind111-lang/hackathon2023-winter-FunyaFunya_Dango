@@ -1,3 +1,4 @@
+dataclasses-json == 0.5.7
 django == 4.1.7
 django-filter == 22.1
 djangorestframework == 3.14.0
