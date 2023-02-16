@@ -6,13 +6,13 @@ const PrefectureInfo = () => {
   const [posts, setPosts] = useState([]);
   const { id } = useParams();
   useEffect(() => {
-    fetch(`127.0.0.1:8000/gourmet/prefecture/${id}`).then((result) => {
+    fetch(`http://127.0.0.1:8000/gourmet/prefecture/${id}`).then((result) => {
       result.json().then((result) => {
         console.log(result);
         setPosts(result);
       });
     });
-  }, []);
+  }, [id]);
   return (<div>{posts}</div>);
 };
 
