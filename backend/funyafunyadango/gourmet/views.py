@@ -46,7 +46,7 @@ def index(request, param):
             if category['main_category_id'] == 43 or category['sub_category_id'] == 43:
                 match = JsonResult(category['company_name'], category['title'],
                                    category['url'], category['main_image'], category['created_at'], 
-                                   category['like'],)
+                                   category['like'])
                 json_list.append(match.to_dict())
                 # print(category_name)
                 
