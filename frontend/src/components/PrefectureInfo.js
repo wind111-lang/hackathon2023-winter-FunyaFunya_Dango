@@ -15,7 +15,8 @@ const PrefectureInfo = () => {
       });
     });
   }, [id]);
-  if (posts == null) return null;
+  if (posts == null) return <p className="loading">Now loading...</p>
+  if (posts !== null && posts.datas.length === 0) return <p className="Not_release">該当するプレスリリースがありませんでした</p>;
   return (
     <div className="contentsPage">
       <div className="contents">
@@ -27,6 +28,7 @@ const PrefectureInfo = () => {
       </div>
     </div>
   );
+
 };
 
 export default PrefectureInfo;

@@ -56,4 +56,10 @@
     font-size: 15px;
 }
 
+.postFooter .date {
+}
 
+.loading{
+    text-align: center;
+    width: 100%;
+}
