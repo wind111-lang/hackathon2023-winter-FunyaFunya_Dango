@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Card from "./Card";
 import "./PrefectureInfo.css";
 
 const PrefectureInfo = () => {
@@ -21,15 +22,7 @@ const PrefectureInfo = () => {
       <div className="contents">
         {posts.datas.map((data) => {
           return (
-            <div className="cardContainer" key={data.title}>
-              <div className="postHeader">
-                <h3><a href={data.url}>{data.title}</a></h3>
-              </div>
-              <div className="postFooter">
-                <p className="companyName">{data.company_name}</p>
-                <p className="date">{data.created_at}</p>
-              </div>
-            </div>
+            <Card data={data} key={data.title}/>
           );
         })}
       </div>

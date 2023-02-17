@@ -1,13 +1,39 @@
 .prefectures {
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
+    height: 80vh;
+    display: grid;
     align-items: center;
     justify-content: center;
+
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+
     gap: 30px;
     margin-top: 50px;
+
 }
 
+
+.preName {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 7;
+    background-color: white;
+    font-size: x-large;
+    font-weight: bold;
+    background: linear-gradient(to bottom, #f4f6f2 0%, #ebede3 37%, #dcdbc8 100%);
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    font-family: "ヒラギノ丸ゴ ProN";
+    align-items: center;
+}
+
+.preName:hover {
+    box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
 
 .prefectures a {
     text-decoration: none;
