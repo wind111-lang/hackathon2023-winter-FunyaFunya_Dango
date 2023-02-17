@@ -17,9 +17,6 @@ class JsonResult:
     url: str
     image_url: str
     created_at: str
-    company_id: int
-    release_id: int
-
 
 def index(request, param):
     # if request.method == 'GET':
@@ -41,15 +38,18 @@ def index(request, param):
         # ここから絞り込み
 
         category_data = result.json()
-        # res.json()で取得したリストの要素を一つずつ取り出して、それぞれの辞書の'company_name'キーにアクセスして、それをcategory_nameに代入し、それをprint()で出力しています。
+        # result.json()で取得したリストの要素を一つずつ取り出して、dataclassに格納していく
+        # 結果はjson_listに格納され,重複は弾く
+        # 最終的にはdatasをjson形式にして返す
         for category in category_data:
-            category_name = category['url']
             if category['main_category_id'] == 43 or category['sub_category_id'] == 43:
                 match = JsonResult(category['company_name'], category['title'],
-                                   category['url'], category['main_image'], category['created_at'], 
-                                   category['company_id'], category['release_id'])
-                json_list.append(match.to_dict())
-                # print(category_name)
-        print(json_list)
+                                   category['url'], category['main_image'], category['created_at'])
+                if match.to_dict() not in json_list:
+                    json_list.append(match.to_dict())
+
+        sort_json_list = sorted(
+            json_list, key=lambda x: x['created_at'])
+        # ソート用(仮)
         datas = {'datas': json_list}
         return JsonResponse(datas, safe=False, json_dumps_params={'ensure_ascii': False})
