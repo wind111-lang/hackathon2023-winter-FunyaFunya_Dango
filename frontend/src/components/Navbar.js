@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
     <nav>
-        <h1 className="appName">都道府県別グルメ情報</h1>
+        <h1 className="appName"><Link to="/">Gourmet Explore</Link></h1>
         <div className='navRegion'>
           <Link to="/area/1">北海道</Link>
           <Link to="/area/2">東北</Link>
