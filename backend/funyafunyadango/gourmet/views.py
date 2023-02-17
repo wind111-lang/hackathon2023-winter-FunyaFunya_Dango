@@ -17,6 +17,7 @@ class JsonResult:
     url: str
     image_url: str
     created_at: str
+    like: int
 
 def index(request, param):
     # if request.method == 'GET':
@@ -44,7 +45,8 @@ def index(request, param):
         for category in category_data:
             if category['main_category_id'] == 43 or category['sub_category_id'] == 43:
                 match = JsonResult(category['company_name'], category['title'],
-                                   category['url'], category['main_image'], category['created_at'])
+                                   category['url'], category['main_image'], category['created_at'], 
+                                   category['like'])
                 if match.to_dict() not in json_list:
                     json_list.append(match.to_dict())
 
