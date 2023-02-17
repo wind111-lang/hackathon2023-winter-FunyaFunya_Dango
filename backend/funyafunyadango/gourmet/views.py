@@ -18,7 +18,6 @@ class JsonResult:
     image_url: str
     created_at: str
 
-
 def index(request, param):
     # if request.method == 'GET':
 
@@ -49,8 +48,8 @@ def index(request, param):
                 if match.to_dict() not in json_list:
                     json_list.append(match.to_dict())
 
-                # print(category_name)
         sort_json_list = sorted(
             json_list, key=lambda x: x['created_at'])
+        # ソート用(仮)
         datas = {'datas': json_list}
         return JsonResponse(datas, safe=False, json_dumps_params={'ensure_ascii': False})
