@@ -17,8 +17,7 @@ class JsonResult:
     url: str
     image_url: str
     created_at: str
-    company_id: int
-    release_id: int
+    like: int
 
 
 def index(request, param):
@@ -47,9 +46,11 @@ def index(request, param):
             if category['main_category_id'] == 43 or category['sub_category_id'] == 43:
                 match = JsonResult(category['company_name'], category['title'],
                                    category['url'], category['main_image'], category['created_at'], 
-                                   category['company_id'], category['release_id'])
+                                   category['like'],)
                 json_list.append(match.to_dict())
                 # print(category_name)
+                
+                
         print(json_list)
         datas = {'datas': json_list}
         return JsonResponse(datas, safe=False, json_dumps_params={'ensure_ascii': False})
