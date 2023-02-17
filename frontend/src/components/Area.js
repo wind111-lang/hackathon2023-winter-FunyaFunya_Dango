@@ -34,7 +34,8 @@ const Area = () => {
   return (
   <div className="prefectures">
     {prefs.map((prefecture) => (
-        <Link to={`/prefectures/${prefecture.id}`} key={prefecture.id}>{prefecture.name}</Link>
+        <Link to={`/prefectures/${prefecture.id}`} key={prefecture.id}>
+          <div className="preName">{prefecture.name}</div></Link>
     ))}
   </div>
 )};

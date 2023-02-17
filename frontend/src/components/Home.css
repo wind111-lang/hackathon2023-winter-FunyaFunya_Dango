@@ -7,6 +7,7 @@
     place-items: center;
 }
 
+
 .region {
     width: 180px;
     height: 180px;
@@ -23,7 +24,28 @@
     font-family: "ヒラギノ丸ゴ ProN";
 }
 
+
 .region:hover {
     box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);
     transform: scale(1.1);
+}
+
+
+
+/* レスポンシブ(タブレット用) */
+@media screen and (max-width: 959px) {
+    .regionWrapper {
+        max-width: 800px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* レスポンシブ(スマホ用) */
+@media screen and (max-width: 480px) {
+    .regionWrapper {
+        max-width: 300px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
