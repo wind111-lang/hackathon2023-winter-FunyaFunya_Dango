@@ -1,0 +1,29 @@
+.regionWrapper {
+    max-width: 1170px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 30vh);
+    place-items: center;
+}
+
+.region {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    background-color: white;
+    font-size: x-large;
+    font-weight: bold;
+    background: linear-gradient(to bottom, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    font-family: "ヒラギノ丸ゴ ProN";
+}
+
+.region:hover {
+    box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
