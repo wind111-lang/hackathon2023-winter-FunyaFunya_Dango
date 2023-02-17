@@ -6,6 +6,10 @@ nav {
     background-color: #282c34;
 }
 
+nav a {
+    text-decoration: none;
+    color: white;
+}
 nav .appName {
     color: white;
 }
