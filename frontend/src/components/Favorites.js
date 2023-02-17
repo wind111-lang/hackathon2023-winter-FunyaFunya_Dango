@@ -9,7 +9,7 @@ const Favorites = () => {
       <h3>お気に入りしたページ</h3>
       <div className="favorites">
         {favs.map((data) => (
-          <Card data={data}></Card>
+          <Card data={data} key={data.title}></Card>
         ))}
       </div>
     </div>
