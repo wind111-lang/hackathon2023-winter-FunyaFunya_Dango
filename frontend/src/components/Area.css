@@ -3,8 +3,13 @@
     display: grid;
     align-items: center;
     justify-content: center;
+
     grid-template-columns: repeat(2, 1fr);
     place-items: center;
+
+    gap: 30px;
+    margin-top: 50px;
+
 }
 
 
