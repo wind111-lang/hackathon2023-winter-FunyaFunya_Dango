@@ -7,7 +7,7 @@ from django.http import JsonResponse, HttpResponse
 
 
 # Create your views here.
-
+print("gittest")
 
 @dataclass_json
 @dataclass
