@@ -4,6 +4,16 @@ nav {
     align-items: center;
     height: 10vh;
     background-color: #282c34;
+    gap: 100px;
+}
+
+.navRegion {
+    display: flex;
+    gap: 20px;
+}
+
+.navRegion a {
+    color: white;
 }
 
 nav a {
@@ -11,5 +21,9 @@ nav a {
     color: white;
 }
 nav .appName {
+    color: white;
+}
+
+.favorite {
     color: white;
 }
