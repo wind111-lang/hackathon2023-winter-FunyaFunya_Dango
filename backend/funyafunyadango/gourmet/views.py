@@ -7,7 +7,6 @@ from django.http import JsonResponse, HttpResponse
 
 
 # Create your views here.
-print("test")
 
 @dataclass_json
 @dataclass
@@ -19,8 +18,35 @@ class JsonResult:
     created_at: str
     like: int
 
+class JsonResult_youtube:
+    #引数を受け取るようにする
+    def __init__(self, company_name: str, title: str, url: str, main_image: str, created_at: str, like: int, youtube_url: str):
+        self.company_name = company_name
+        self.title = title
+        self.url = url
+        self.main_image = main_image
+        self.created_at = created_at
+        self.like = like
+        self.youtube_url = youtube_url
+
+    #オブジェクトを辞書形式にする返還する
+    def to_dict(self):
+        return {
+            'company_name': self.company_name,
+            'title': self.title,
+            'url': self.url,
+            'main_image': self.main_image,
+            'created_at': self.created_at,
+            'like': self.like,
+            'youtube_url': self.youtube_url
+        }
+
+
 def index(request, param):
     # if request.method == 'GET':
+
+    #カテゴリーIDを定義
+    category_id = 43
 
     if request.method == 'GET':
         BASE_URL = 'https://hackathon.stg-prtimes.net/api'
@@ -28,11 +54,17 @@ def index(request, param):
         datas = param
 
         url = BASE_URL + f"/prefectures/{datas}/releases?per_page=999"
+        url_youtube = BASE_URL + f"/categories/{category_id}/releases/movie"
         token = "b655dffbe1b2c82ca882874670cb110995c6604151e1b781cf5c362563eb4e12"
         headers = {'Content-Type': 'application/json',
                    'Authorization': f'Bearer {token}', }
 
         json_list = []
+
+        result_youtube = requests.get(url_youtube, headers=headers)
+        youtube_data = result_youtube.json()
+        for youtube in youtube_data:
+            youtube_info = (youtube['company_id'], youtube['release_id'], youtube['youtube_url'])
 
         result = requests.get(url, headers=headers)
         # ここでresultには、PRTIMESから受け取ったjson形式のデータが入っている
@@ -44,11 +76,18 @@ def index(request, param):
         # 最終的にはdatasをjson形式にして返す
         for category in category_data:
             if category['main_category_id'] == 43 or category['sub_category_id'] == 43:
-                match = JsonResult(category['company_name'], category['title'],
-                                   category['url'], category['main_image'], category['created_at'], 
-                                   category['like'])
-                if match.to_dict() not in json_list:
-                    json_list.append(match.to_dict())
+                    #youtubeデータがある場合
+                    if category['company_id'] == youtube['company_id'] and category['release_id'] == youtube['release_id']:
+                        for youtube in youtube_data:
+                            match = JsonResult_youtube(category['company_name'], category['title'], category['url'], category['main_image'], category['created_at'], category['like'], youtube['youtube_url'])
+                            if match.to_dict() not in json_list:
+                                json_list.append(match.to_dict())
+                            break
+                    #youtubeデータがない場合
+                    else:
+                        match = JsonResult(category['company_name'], category['title'], category['url'], category['main_image'], category['created_at'], category['like'])
+                        if match.to_dict() not in json_list:
+                            json_list.append(match.to_dict())
 
         sort_json_list = sorted(
             json_list, key=lambda x: x['created_at'])
