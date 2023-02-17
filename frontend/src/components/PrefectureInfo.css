@@ -13,13 +13,29 @@
 }
 
 .cardContainer {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     border-radius: 5px;
     box-shadow: 5px 5px 20px -6px #777777;
     width: 500px;
-    height: 160px;
+    height: 180px;
 }
 
+.cardContainer .postHeader {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.cardContainer .postHeader .like {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
 
 .cardContainer .postHeader a {
     text-decoration: none;
@@ -32,8 +48,12 @@
 .postFooter {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
     align-items: baseline;
+}
+
+.postFooter p {
+    font-size: 15px;
 }
 
 
