@@ -22,7 +22,7 @@ const PrefectureInfo = () => {
           return (
             <div className="cardContainer" key={data.title}>
               <div className="postHeader">
-                <h3>{data.title}</h3>
+                <h3><a href={data.url}>{data.title}</a></h3>
               </div>
               <div className="postFooter">
                 <p className="companyName">{data.company_name}</p>

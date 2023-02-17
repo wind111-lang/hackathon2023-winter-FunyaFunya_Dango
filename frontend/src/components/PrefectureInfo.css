@@ -17,6 +17,30 @@
     border-radius: 5px;
     box-shadow: 5px 5px 20px -6px #777777;
     width: 500px;
-    height: 200px;
+    height: 160px;
 }
 
+.cardContainer .postHeader {
+    
+}
+
+.cardContainer .postHeader a {
+    text-decoration: none;
+    color: rgb(11, 11, 11);
+}
+.cardContainer .postHeader a:hover {
+    color: rgb(106, 105, 105);
+}
+
+.postFooter {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: baseline;
+}
+
+.postFooter .company {
+}
+
+.postFooter .date {
+}
