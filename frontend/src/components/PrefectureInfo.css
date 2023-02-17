@@ -20,9 +20,6 @@
     height: 160px;
 }
 
-.cardContainer .postHeader {
-    
-}
 
 .cardContainer .postHeader a {
     text-decoration: none;
@@ -39,8 +36,4 @@
     align-items: baseline;
 }
 
-.postFooter .company {
-}
 
-.postFooter .date {
-}
