@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+// import { fa-solid fa-heart } from "@fortawesome/free-solid-svg-icons";
 
 const Card = ({ data }) => {
   return (
@@ -10,7 +10,7 @@ const Card = ({ data }) => {
           <a href={data.url}>{data.title}</a>
         </h3>
         <div className="like">
-          <FontAwesomeIcon icon={faEnvelope} />
+          <FontAwesomeIcon icon="fa-solid fa-heart" />
           <span>{data.like}</span>
         </div>
       </div>
