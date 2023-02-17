@@ -17,30 +17,7 @@ class JsonResult:
     image_url: str
     created_at: str
     like: int
-
-class JsonResult_youtube:
-    #引数を受け取るようにする
-    def __init__(self, company_name: str, title: str, url: str, main_image: str, created_at: str, like: int, youtube_url: str):
-        self.company_name = company_name
-        self.title = title
-        self.url = url
-        self.main_image = main_image
-        self.created_at = created_at
-        self.like = like
-        self.youtube_url = youtube_url
-
-    #オブジェクトを辞書形式にする返還する
-    def to_dict(self):
-        return {
-            'company_name': self.company_name,
-            'title': self.title,
-            'url': self.url,
-            'main_image': self.main_image,
-            'created_at': self.created_at,
-            'like': self.like,
-            'youtube_url': self.youtube_url
-        }
-
+    youtube_url: str
 
 def index(request, param):
     # if request.method == 'GET':
@@ -79,13 +56,13 @@ def index(request, param):
                     #youtubeデータがある場合
                     if category['company_id'] == youtube['company_id'] and category['release_id'] == youtube['release_id']:
                         for youtube in youtube_data:
-                            match = JsonResult_youtube(category['company_name'], category['title'], category['url'], category['main_image'], category['created_at'], category['like'], youtube['youtube_url'])
+                            match = JsonResult(category['company_name'], category['title'], category['url'], category['main_image'], category['created_at'], category['like'], youtube['youtube_url'])
                             if match.to_dict() not in json_list:
                                 json_list.append(match.to_dict())
                             break
                     #youtubeデータがない場合
                     else:
-                        match = JsonResult(category['company_name'], category['title'], category['url'], category['main_image'], category['created_at'], category['like'])
+                        match = JsonResult(category['company_name'], category['title'], category['url'], category['main_image'], category['created_at'], category['like'], "")
                         if match.to_dict() not in json_list:
                             json_list.append(match.to_dict())
 
