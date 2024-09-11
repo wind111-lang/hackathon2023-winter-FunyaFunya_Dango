@@ -19,6 +19,8 @@ class JsonResult:
     like: int
     youtube_url: str
 
+const API_TOKEN_KEY
+
 def index(request, param):
     # if request.method == 'GET':
 
@@ -32,8 +34,7 @@ def index(request, param):
 
         url = BASE_URL + f"/prefectures/{datas}/releases?per_page=999"
         url_youtube = BASE_URL + f"/categories/{category_id}/releases/movie"
-        token = "b655dffbe1b2c82ca882874670cb110995c6604151e1b781cf5c362563eb4e12"
-        # 公開可能確認済
+        token = API_TOKEN_KEY
         headers = {'Content-Type': 'application/json',
                    'Authorization': f'Bearer {token}', }
 
